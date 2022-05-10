@@ -8,6 +8,7 @@ import Form from "./components/Form/Form";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loadTasksActionCreator(toDos));
   }, [dispatch]);
