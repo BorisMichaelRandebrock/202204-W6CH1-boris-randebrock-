@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addTaskActionCreator } from "../../redux/features/taskSlice";
+import { addTasksThunk } from "../../redux/thunks/tasksListThunks";
 
 const StyledFormComponent = styled.div`
-  border-style: dashed;
+  border-style: solid;
   margin: 30px;
   border-radius: 20px;
   padding: 20px;
@@ -15,7 +15,7 @@ const StyledFormComponent = styled.div`
   }
 
   input {
-    border-style: dashed;
+    border-style: solid;
     border-width: 1px;
     padding: 10px;
     margin: 10px;
@@ -24,7 +24,7 @@ const StyledFormComponent = styled.div`
     text-align: center;
   }
   button {
-    border-style: dashed;
+    border-style: solid;
     border-width: 1px;
     padding: 10px;
     margin: 10px;
@@ -49,7 +49,7 @@ const Form = () => {
 
   const addTask = (event) => {
     event.preventDefault();
-    dispatch(addTaskActionCreator({ id: uniqueId(), name, done: false }));
+    dispatch(addTasksThunk({ id: uniqueId(), name, done: false }));
     setName("");
   };
 

@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
-import {
-  editTaskActionCreator,
-  removeTaskActionCreator,
-  updateTaskActionCreator,
-} from "../../redux/features/taskSlice";
+import { editTaskActionCreator } from "../../redux/features/taskSlice";
 import styled from "styled-components";
+import {
+  removeTasksThunk,
+  updateTasksThunk,
+} from "../../redux/thunks/tasksListThunks";
 
 const StyledTaskComponent = styled.div`
-  border-style: dashed;
+  border-style: solid;
   margin: 30px;
   border-radius: 20px;
   padding: 20px;
@@ -20,7 +20,7 @@ const StyledTaskComponent = styled.div`
     padding: 10px;
   }
   button {
-    border-style: dashed;
+    border-style: solid;
     border-width: 1px;
     padding: 10px;
     font-size: 15px;
@@ -34,11 +34,11 @@ const Task = ({ task: { id, name, done }, inputValue }) => {
   const dispatch = useDispatch();
 
   const removeTask = () => {
-    dispatch(removeTaskActionCreator(id));
+    dispatch(removeTasksThunk(id));
   };
 
   const updateTask = () => {
-    dispatch(updateTaskActionCreator(id));
+    dispatch(updateTasksThunk(id));
   };
 
   const editTask = () => {
@@ -53,8 +53,8 @@ const Task = ({ task: { id, name, done }, inputValue }) => {
         <li>
           Task Status:{" "}
           {done
-            ? "You the best, it's finished"
-            : "C'mon, you have to finish that"}
+            ? "You´re the best, it's finished"
+            : "What are you waiting for?"}
         </li>
       </ul>
       <div>
